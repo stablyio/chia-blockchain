@@ -33,7 +33,7 @@ from chia.wallet.cc_wallet.cc_wallet import CCWallet
 from chia.wallet.derivation_record import DerivationRecord
 from chia.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_wallet_sk_unhardened
 from chia.wallet.key_val_store import KeyValStore
-from chia.wallet.puzzles.cc_loader import CC_MOD
+from chia.wallet.puzzles.cat_loader import CC_MOD
 from chia.wallet.rl_wallet.rl_wallet import RLWallet
 from chia.wallet.settings.user_settings import UserSettings
 from chia.wallet.trade_manager import TradeManager

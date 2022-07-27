@@ -29,7 +29,7 @@ from chia.types.blockchain_format.coin import Coin
 from chia.wallet.cc_wallet.cc_utils import match_cat_puzzle
 from chia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk
 from chia.wallet.wallet import Wallet
-from chia.wallet.puzzles.cc_loader import CC_MOD
+from chia.wallet.puzzles.cat_loader import CC_MOD
 
 
 class FullNodeRpcApi:

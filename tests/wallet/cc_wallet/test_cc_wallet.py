@@ -13,7 +13,7 @@ from chia.util.ints import uint16, uint32, uint64
 from chia.wallet.cc_wallet.cc_utils import construct_cc_puzzle
 from chia.wallet.cc_wallet.cc_wallet import CCWallet
 from chia.wallet.cc_wallet.cat_constants import DEFAULT_CATS
-from chia.wallet.puzzles.cc_loader import CC_MOD
+from chia.wallet.puzzles.cat_loader import CC_MOD
 from chia.wallet.transaction_record import TransactionRecord
 from tests.setup_nodes import setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert

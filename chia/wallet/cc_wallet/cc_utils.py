@@ -10,7 +10,7 @@ from chia.types.condition_opcodes import ConditionOpcode
 from chia.types.spend_bundle import CoinSpend, SpendBundle
 from chia.util.condition_tools import conditions_dict_for_solution
 from chia.wallet.lineage_proof import LineageProof
-from chia.wallet.puzzles.cc_loader import CC_MOD
+from chia.wallet.puzzles.cat_loader import CC_MOD
 
 NULL_SIGNATURE = G2Element()
 
