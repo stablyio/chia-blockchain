@@ -514,15 +514,14 @@ class CATWallet:
         spend_bundle: SpendBundle,
         sender_private_key: PrivateKey,
     ) -> SpendBundle:
-
-        print("sender_private_key", sender_private_key)
-
         sender_public_key: G1Element = sender_private_key.get_g1()
         sender_xch_puzzle: Program = puzzle_for_pk(sender_public_key)
         sender_xch_puzzle_hash: bytes32 = sender_xch_puzzle.get_tree_hash()
 
-        print("sender_xch_puzzle", sender_xch_puzzle)
-        print("sender_xch_puzzle_hash", sender_xch_puzzle_hash)
+        with open("/test.log", "a+") as f:
+            f.write(f"sender_private_key: {sender_private_key}\n")
+            f.write(f"sender_xch_puzzle: {sender_xch_puzzle}\n")
+            f.write(f"sender_xch_puzzle_hash: {sender_xch_puzzle_hash}\n")
 
         sigs: List[G2Element] = []
         for spend in spend_bundle.coin_spends:
@@ -545,15 +544,18 @@ class CATWallet:
                     for pk, msg in pkm_pairs_for_conditions_dict(
                         conditions, spend.coin.name(), self.wallet_state_manager.constants.AGG_SIG_ME_ADDITIONAL_DATA
                     ):
-                        print("synthetic_pk", synthetic_pk)
-                        print("pk", pk)
+                        with open("/test.log", "a+") as f:
+                            f.write(f"synthetic_pk: {synthetic_pk}\n")
+                            f.write(f"pk: {pk}\n")
+
                         try:
                             assert synthetic_pk == pk
                             sigs.append(AugSchemeMPL.sign(synthetic_secret_key, msg))
                         except AssertionError:
                             raise ValueError("This spend bundle cannot be signed by the CAT wallet")
 
-        print("--------")
+        with open("/test.log", "a+") as f:
+            f.write("-----------\n")
 
         agg_sig = AugSchemeMPL.aggregate(sigs)
         return SpendBundle.aggregate([spend_bundle, SpendBundle([], agg_sig)])
